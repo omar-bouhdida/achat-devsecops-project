@@ -35,5 +35,10 @@ pipeline {
                 '''
             }
         }
+        stage('Publish Artifact') {
+            steps {
+                sh 'mvn deploy'
+            }
+        }
     }
 }
