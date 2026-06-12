@@ -31,7 +31,7 @@ pipeline {
                 mvn sonar:sonar \
                 -Dsonar.projectKey=achat \
                 -Dsonar.host.url=http://sonarqube:9000 \
-                -Dsonar.login=YOUR_TOKEN
+                -Dsonar.login=sqa_c4d29bd6feeddc1906ee095c274db5a4143ab5da
                 '''
             }
         }
