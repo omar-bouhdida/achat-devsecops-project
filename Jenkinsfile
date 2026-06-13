@@ -55,18 +55,19 @@ stages {
     }
 
     stage('Trivy Scan') {
-        steps {
-            sh '''
-            docker run --rm \
-            -v /var/run/docker.sock:/var/run/docker.sock \
-            aquasec/trivy image \
-            --scanners vuln \
-            --format table \
-            achat-app:${BUILD_NUMBER} \
-            > trivy-report.txt
-            '''
-        }
+    steps {
+        sh '''
+        docker run --rm \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        aquasec/trivy image \
+        --timeout 30m \
+        --scanners vuln \
+        --format table \
+        achat-app:${BUILD_NUMBER} \
+        > trivy-report.txt
+        '''
     }
+}
 
     stage('OWASP ZAP Scan') {
         steps {
