@@ -69,19 +69,17 @@ stages {
     }
 }
 
-    stage('OWASP ZAP Scan') {
-        steps {
-            sh '''
-            docker run --rm \
-            --network devops-net \
-            -v $WORKSPACE:/zap/wrk \
-            ghcr.io/zaproxy/zaproxy:stable \
-            zap-baseline.py \
-            -t http://achat-app:8089/SpringMVC/ \
-            -r zap-report.html
-            '''
-        }
+    sstage('OWASP ZAP Scan') {
+    steps {
+        sh '''
+        docker run --rm \
+        --network devops-net \
+        ghcr.io/zaproxy/zaproxy:stable \
+        zap-baseline.py \
+        -t http://achat-app:8089/SpringMVC/
+        '''
     }
+}
 
     stage('Publish Artifact to Nexus') {
         steps {
