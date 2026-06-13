@@ -69,7 +69,7 @@ stages {
     }
 }
 
-    sstage('OWASP ZAP Scan') {
+    stage('OWASP ZAP Scan') {
     steps {
         sh '''
         docker run --rm \
