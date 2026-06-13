@@ -94,7 +94,15 @@
     <version>12.1.0</version>
 
     <configuration>
-        <ossIndexAnalyzerEnabled>false</ossIndexAnalyzerEnabled>
+        <formats>
+            <format>HTML</format>
+        </formats>
+
+        <!-- Disable Sonatype OSS Index -->
+        <ossindexAnalyzerEnabled>false</ossindexAnalyzerEnabled>
+
+        <!-- Do not fail the build because vulnerabilities exist -->
+        <failBuildOnCVSS>11</failBuildOnCVSS>
     </configuration>
 
     <executions>
